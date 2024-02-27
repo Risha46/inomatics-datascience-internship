@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Inomaticsresearchlabs</title>
+</head>
+<body>
+    <h1>Notes</h1>
+    <form method="POST">
+        <textarea name="note" id="note" cols="30" rows="10"></textarea>
+        <button type="submit">Add Note</button>
+    </form>
+    <ul id="notes-container">
+        {% for note in notes %}
+            <li class="note">
+                <p>{{ note.timestamp.strftime('%b %d, %Y %I:%M%p').lower() }}</p>
+                <p>{{ note.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
